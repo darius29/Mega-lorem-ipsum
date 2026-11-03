@@ -7,7 +7,8 @@ const dataDirectory = path.join(__dirname, "../../data");
 
 fs.mkdirSync(dataDirectory, { recursive: true });
 
-const databasePath = path.join(dataDirectory, "records.db");
+const databasePath =
+  process.env.DB_PATH || path.join(dataDirectory, "records.db");
 
 //Connect To SQLite
 const db = new Database(databasePath);

@@ -1,0 +1,37 @@
+@use "../../styles/abstracts/variables" as vars;
+@use "../../styles/abstracts/mixins" as mixins;
+
+.header {
+  padding: vars.$spacing-4;
+  background-color: vars.$color-surface;
+  border-bottom: 1px solid vars.$color-border;
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-3;
+  }
+
+  &__icon {
+    color: vars.$color-primary;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: vars.$font-size-lg;
+    font-weight: 700;
+  }
+
+  @include mixins.md {
+    padding: vars.$spacing-5;
+
+    .header__title {
+      font-size: vars.$font-size-xl;
+    }
+  }
+
+  @include mixins.lg {
+    padding: vars.$spacing-5 vars.$spacing-6;
+  }
+}

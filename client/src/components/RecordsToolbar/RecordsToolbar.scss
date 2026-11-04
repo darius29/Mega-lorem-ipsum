@@ -1,0 +1,79 @@
+@use "../../styles/abstracts/variables" as vars;
+@use "../../styles/abstracts/mixins" as mixins;
+
+.records-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$spacing-5;
+
+  &__search {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-2;
+    width: 100%;
+    padding: 0 vars.$spacing-3;
+    background-color: vars.$color-surface;
+    border: 1px solid vars.$color-border;
+    border-radius: vars.$radius-md;
+
+    &:focus-within {
+      border-color: vars.$color-primary;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+    }
+
+    input {
+      width: 100%;
+      min-width: 0;
+      height: 44px;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: vars.$color-text;
+      font-size: vars.$font-size-sm;
+
+      &::placeholder {
+        color: vars.$color-text-secondary;
+      }
+    }
+  }
+
+  &__search-icon {
+    flex-shrink: 0;
+    color: vars.$color-text-secondary;
+  }
+
+  &__add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: vars.$spacing-2;
+    min-height: 44px;
+    padding: vars.$spacing-3 vars.$spacing-4;
+    border: none;
+    border-radius: vars.$radius-md;
+    background-color: vars.$color-primary;
+    color: vars.$color-surface;
+    font-size: vars.$font-size-sm;
+    font-weight: 600;
+    transition: background-color vars.$transition-fast;
+
+    &:hover:not(:disabled) {
+      background-color: vars.$color-primary-hover;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  @include mixins.md {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &__search {
+      max-width: 400px;
+    }
+  }
+}

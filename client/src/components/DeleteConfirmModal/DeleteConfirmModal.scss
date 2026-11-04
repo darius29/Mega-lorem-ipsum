@@ -1,0 +1,145 @@
+@use "../../styles/abstracts/variables" as vars;
+
+.delete-modal {
+  width: calc(100% - 2 * vars.$spacing-4);
+  max-width: 440px;
+  margin: auto;
+  padding: 0;
+  border: none;
+  border-radius: vars.$radius-lg;
+  background-color: vars.$color-surface;
+  color: vars.$color-text;
+  box-shadow: vars.$shadow-md;
+
+  &[open] {
+    animation: modal-enter 250ms ease-out;
+  }
+
+  &--closing[open] {
+    animation: modal-exit 250ms ease-in;
+  }
+
+  &::backdrop {
+    background-color: rgba(15, 23, 42, 0.55);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: vars.$spacing-5;
+    padding-bottom: 0;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: vars.$radius-lg;
+    background-color: rgba(220, 38, 38, 0.1);
+    color: vars.$color-danger;
+  }
+
+  &__close {
+    display: inline-flex;
+    padding: vars.$spacing-2;
+    border: none;
+    border-radius: vars.$radius-sm;
+    background: transparent;
+    color: vars.$color-text-secondary;
+    cursor: pointer;
+  }
+
+  &__body {
+    padding: vars.$spacing-4 vars.$spacing-5 vars.$spacing-5;
+
+    h2 {
+      margin: 0 0 vars.$spacing-3;
+      font-size: vars.$font-size-xl;
+    }
+
+    p {
+      margin: 0;
+      color: vars.$color-text-secondary;
+      font-size: vars.$font-size-sm;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    strong {
+      color: vars.$color-text;
+    }
+
+    .delete-modal__error {
+      margin-top: vars.$spacing-3;
+      color: vars.$color-danger;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: vars.$spacing-3;
+    padding: vars.$spacing-4 vars.$spacing-5;
+    border-top: 1px solid vars.$color-border;
+  }
+
+  &__cancel,
+  &__confirm {
+    min-height: 44px;
+    padding: vars.$spacing-3 vars.$spacing-4;
+    border-radius: vars.$radius-md;
+    font-size: vars.$font-size-sm;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__cancel {
+    border: 1px solid vars.$color-border;
+    background-color: vars.$color-surface;
+    color: vars.$color-text;
+  }
+
+  &__confirm {
+    border: 1px solid vars.$color-danger;
+    background-color: vars.$color-danger;
+    color: vars.$color-surface;
+  }
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modal-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .delete-modal[open] {
+    animation-duration: 1ms;
+  }
+}

@@ -1,0 +1,186 @@
+@use "../../styles/abstracts/variables" as vars;
+@use "../../styles/abstracts/mixins" as mixins;
+
+.record-modal {
+  width: calc(100% - 2 * vars.$spacing-4);
+  max-width: 560px;
+  max-height: calc(100dvh - 2 * vars.$spacing-4);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  border: none;
+  border-radius: vars.$radius-lg;
+  background-color: vars.$color-surface;
+  color: vars.$color-text;
+  box-shadow: vars.$shadow-md;
+
+  &[open] {
+    animation: modal-enter vars.$animation-modal-duration ease-out;
+  }
+
+  &--closing[open] {
+    animation: modal-exit vars.$animation-modal-duration ease-in;
+  }
+
+  &::backdrop {
+    background-color: vars.$color-modal-backdrop;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: vars.$spacing-3;
+    padding: vars.$spacing-5;
+    border-bottom: 1px solid vars.$color-border;
+
+    h2 {
+      margin: 0;
+      font-size: vars.$font-size-xl;
+    }
+
+    p {
+      margin: vars.$spacing-2 0 0;
+      color: vars.$color-text-secondary;
+      font-size: vars.$font-size-sm;
+    }
+  }
+
+  &__close {
+    display: inline-flex;
+    padding: vars.$spacing-2;
+    border: none;
+    border-radius: vars.$radius-sm;
+    background: transparent;
+    color: vars.$color-text-secondary;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-4;
+    padding: vars.$spacing-5;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-2;
+
+    label {
+      font-size: vars.$font-size-sm;
+      font-weight: 600;
+
+      span {
+        color: vars.$color-danger;
+      }
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 44px;
+      padding: vars.$spacing-3;
+      border: 1px solid vars.$color-border;
+      border-radius: vars.$radius-md;
+      background-color: vars.$color-surface;
+      color: vars.$color-text;
+      font-size: vars.$font-size-sm;
+
+      &[aria-invalid="true"] {
+        border-color: vars.$color-danger;
+      }
+
+      &:focus {
+        border-color: vars.$color-primary;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+  }
+
+  &__error {
+    margin: 0;
+    color: vars.$color-danger;
+    font-size: vars.$font-size-xs;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: vars.$spacing-3;
+    padding: vars.$spacing-4 vars.$spacing-5;
+    border-top: 1px solid vars.$color-border;
+  }
+
+  &__cancel,
+  &__submit {
+    min-height: 44px;
+    padding: vars.$spacing-3 vars.$spacing-4;
+    border-radius: vars.$radius-md;
+    font-size: vars.$font-size-sm;
+    font-weight: 600;
+
+    &:disabled {
+      opacity: 0.6;
+    }
+  }
+
+  &__cancel {
+    border: 1px solid vars.$color-border;
+    background: vars.$color-surface;
+    color: vars.$color-text;
+  }
+
+  &__submit {
+    border: 1px solid vars.$color-primary;
+    background: vars.$color-primary;
+    color: vars.$color-surface;
+
+    &:hover:not(:disabled) {
+      background: vars.$color-primary-hover;
+    }
+  }
+
+  @include mixins.md {
+    &__header,
+    &__body {
+      padding: vars.$spacing-6;
+    }
+  }
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .record-modal[open],
+  .record-modal--closing[open] {
+    animation-duration: 1ms;
+  }
+}
+
+@keyframes modal-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}

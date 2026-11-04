@@ -1,0 +1,77 @@
+@use "../../styles/abstracts/variables" as vars;
+@use "../../styles/abstracts/mixins" as mixins;
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: vars.$spacing-3;
+  margin-top: vars.$spacing-4;
+  padding: vars.$spacing-3 0;
+
+  &__info {
+    margin: 0;
+    color: vars.$color-text-secondary;
+    font-size: vars.$font-size-sm;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: vars.$spacing-1;
+  }
+
+  &__ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    color: vars.$color-text-secondary;
+    font-size: vars.$font-size-sm;
+  }
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: vars.$spacing-2;
+    border: 1px solid vars.$color-border;
+    border-radius: vars.$radius-md;
+    background-color: vars.$color-surface;
+    color: vars.$color-text;
+    font-size: vars.$font-size-sm;
+    transition: all vars.$transition-fast;
+
+    &:hover:not(:disabled) {
+      color: vars.$color-primary;
+      border-color: vars.$color-primary;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  button.pagination__page--active {
+    background-color: vars.$color-primary;
+    border-color: vars.$color-primary;
+    color: vars.$color-surface;
+    font-weight: 600;
+
+    &:hover:not(:disabled) {
+      background-color: vars.$color-primary-hover;
+      border-color: vars.$color-primary-hover;
+      color: vars.$color-surface;
+    }
+  }
+
+  @include mixins.md {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

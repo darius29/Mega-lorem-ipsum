@@ -1,0 +1,84 @@
+/* COLORS */
+$color-primary: #2563eb;
+$color-primary-hover: #1d4ed8;
+
+$color-text: #0f172a;
+$color-text-secondary: #64748b;
+
+$color-background: #f8fafc;
+$color-surface: #ffffff;
+$color-border: #e2e8f0;
+
+$color-danger: #dc2626;
+$color-success: #16a34a;
+$color-warning: #d97706;
+
+$color-status-active-text: #166534;
+$color-status-active-bg: #dcfce7;
+
+$color-status-pending-text: #92400e;
+$color-status-pending-bg: #fef3c7;
+
+$color-status-archived-text: #475569;
+$color-status-archived-bg: #e2e8f0;
+
+$color-status-done-text: #1d4ed8;
+$color-status-done-bg: #dbeafe;
+
+$color-category-bg: #dbeafe;
+
+$color-modal-backdrop: rgba(15, 23, 42, 0.55);
+
+$color-category-technology-bg: #dbeafe;
+$color-category-technology-text: #1d4ed8;
+
+$color-category-business-bg: #f3e8ff;
+$color-category-business-text: #7e22ce;
+
+$color-category-sport-bg: #dcfce7;
+$color-category-sport-text: #166534;
+
+$color-category-ecommerce-bg: #ffedd5;
+$color-category-ecommerce-text: #9a3412;
+
+$color-category-travel-bg: #fce7f3;
+$color-category-travel-text: #9d174d;
+
+$color-action-edit-bg: #dbeafe;
+$color-action-delete-bg: #fee2e2;
+
+/* TYPOGRAPHY */
+$font-family-base: Inter, Arial, sans-serif;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.5rem;
+$font-size-2xl: 2rem;
+
+/* SPACING */
+$spacing-1: 0.25rem;
+$spacing-2: 0.5rem;
+$spacing-3: 0.75rem;
+$spacing-4: 1rem;
+$spacing-5: 1.5rem;
+$spacing-6: 2rem;
+
+/* BORDER RADIUS */
+$radius-sm: 0.375rem;
+$radius-md: 0.5rem;
+$radius-lg: 0.75rem;
+$radius-xl: 1rem;
+
+/* SHADOWS */
+$shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+$shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
+
+/* TRANSITIONS */
+$transition-fast: 150ms ease;
+$transition-normal: 250ms ease;
+$animation-modal-duration: 250ms;
+
+/* LAYOUT */
+$content-max-width: 1440px;

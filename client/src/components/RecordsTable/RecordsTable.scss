@@ -1,0 +1,259 @@
+@use "../../styles/abstracts/variables" as vars;
+@use "../../styles/abstracts/mixins" as mixins;
+
+.records-table {
+  width: 100%;
+  min-width: 1050px;
+  border-collapse: collapse;
+  text-align: left;
+  table-layout: fixed;
+
+  &__wrapper {
+    width: 100%;
+    overflow-x: auto;
+    background-color: vars.$color-surface;
+    border: 1px solid vars.$color-border;
+    border-radius: vars.$radius-lg;
+    box-shadow: vars.$shadow-sm;
+  }
+
+  th,
+  td {
+    padding: vars.$spacing-4;
+    border-bottom: 1px solid vars.$color-border;
+    font-size: vars.$font-size-sm;
+    vertical-align: middle;
+  }
+
+  th {
+    background-color: vars.$color-background;
+    color: vars.$color-text;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  td {
+    color: vars.$color-text-secondary;
+  }
+
+  th:nth-child(1) {
+    width: 6%;
+  }
+
+  th:nth-child(2) {
+    width: 18%;
+  }
+
+  th:nth-child(3) {
+    width: 13%;
+  }
+
+  th:nth-child(4) {
+    width: 27%;
+  }
+
+  th:nth-child(5) {
+    width: 11%;
+  }
+
+  th:nth-child(6) {
+    width: 15%;
+  }
+
+  th:nth-child(7) {
+    width: 10%;
+  }
+
+  tbody {
+    tr {
+      transition: background-color vars.$transition-fast;
+
+      &:hover {
+        background-color: vars.$color-background;
+      }
+
+      &:last-child td {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__id,
+  &__date {
+    white-space: nowrap;
+  }
+
+  &__title {
+    color: vars.$color-text;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+
+  &__description {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__category,
+  &__status {
+    display: inline-block;
+    padding: vars.$spacing-1 vars.$spacing-2;
+    border-radius: vars.$radius-md;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  &__category {
+    &--technology {
+      background-color: vars.$color-category-technology-bg;
+      color: vars.$color-category-technology-text;
+    }
+
+    &--business {
+      background-color: vars.$color-category-business-bg;
+      color: vars.$color-category-business-text;
+    }
+
+    &--sport {
+      background-color: vars.$color-category-sport-bg;
+      color: vars.$color-category-sport-text;
+    }
+
+    &--e-commerce {
+      background-color: vars.$color-category-ecommerce-bg;
+      color: vars.$color-category-ecommerce-text;
+    }
+
+    &--travel {
+      background-color: vars.$color-category-travel-bg;
+      color: vars.$color-category-travel-text;
+    }
+  }
+
+  &__sort {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: vars.$spacing-2;
+
+    width: 100%;
+    padding: vars.$spacing-1 0;
+
+    border: none;
+    background-color: transparent;
+    color: vars.$color-text;
+
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+
+    cursor: pointer;
+    transition: color vars.$transition-fast;
+
+    svg {
+      flex-shrink: 0;
+      color: vars.$color-text-secondary;
+      transition: color vars.$transition-fast;
+    }
+
+    &:hover {
+      color: vars.$color-primary;
+
+      svg {
+        color: vars.$color-primary;
+      }
+    }
+
+    &--active {
+      color: vars.$color-primary;
+
+      svg {
+        color: vars.$color-primary;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid vars.$color-primary;
+      outline-offset: 2px;
+      border-radius: vars.$radius-sm;
+    }
+  }
+
+  &__status {
+    &--active {
+      color: vars.$color-status-active-text;
+      background-color: vars.$color-status-active-bg;
+    }
+
+    &--pending {
+      color: vars.$color-status-pending-text;
+      background-color: vars.$color-status-pending-bg;
+    }
+
+    &--archived {
+      color: vars.$color-status-archived-text;
+      background-color: vars.$color-status-archived-bg;
+    }
+
+    &--done {
+      color: vars.$color-status-done-text;
+      background-color: vars.$color-status-done-bg;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-2;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: vars.$spacing-2;
+      border: none;
+      border-radius: vars.$radius-sm;
+      background-color: transparent;
+      cursor: pointer;
+      transition:
+        background-color vars.$transition-fast,
+        color vars.$transition-fast;
+
+      &:focus-visible {
+        outline: 2px solid vars.$color-primary;
+        outline-offset: 2px;
+      }
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    }
+
+    .records-table__action--edit {
+      color: vars.$color-primary;
+
+      &:hover:not(:disabled) {
+        background-color: vars.$color-action-edit-bg;
+      }
+    }
+
+    .records-table__action--delete {
+      color: vars.$color-danger;
+
+      &:hover:not(:disabled) {
+        background-color: vars.$color-action-delete-bg;
+      }
+    }
+  }
+
+  @include mixins.md {
+    th,
+    td {
+      padding: vars.$spacing-4;
+    }
+  }
+}

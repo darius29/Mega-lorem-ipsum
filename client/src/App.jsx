@@ -107,6 +107,8 @@ function App() {
     Math.ceil(filteredRecords.length / recordsPerPage),
   );
 
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+
   const startIndex = (currentPage - 1) * recordsPerPage;
 
   const paginatedRecords = filteredRecords.slice(
@@ -323,7 +325,7 @@ function App() {
             />
 
             <Pagination
-              currentPage={currentPage}
+              currentPage={safeCurrentPage}
               totalPages={totalPages}
               totalRecords={filteredRecords.length}
               recordsPerPage={recordsPerPage}

@@ -111,6 +111,7 @@ The frontend functionality can be checked manually by creating a record, editing
 
 Project Structure
 
+```
 Mega-lorem-ipsum/
 ├── client/
 │ ├── public/
@@ -142,6 +143,8 @@ Mega-lorem-ipsum/
 │ └── package.json
 ├── .gitignore
 └── README.md
+```
+
 Notes
 
 - SQLite is stored locally in server/data/records.db by default. Database files are excluded from version control.

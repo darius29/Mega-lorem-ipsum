@@ -76,12 +76,14 @@ DELETE /api/records/:id Delete a record 204 No Content
 
 Record fields
 Field Type Notes
+```
 id Integer Generated automatically
 title String Required
 category String Required
 description String Required
 status String Required
 created_at Timestamp Generated automatically by SQLite
+```
 
 Create and update requests send title, category, description, and status. The backend rejects missing, empty, whitespace-only, or non-string required values.
 
@@ -97,9 +99,11 @@ Example request body:
 
 Shareable Modal URLs
 Dialog Example
+```
 Create http://localhost:5173/?modal=create
 Edit http://localhost:5173/?modal=edit&id=15
 Delete http://localhost:5173/?modal=delete&id=15
+```
 
 For Edit and Delete, the specified ID must refer to an existing record. These URLs use localhost for local development; the frontend and backend are not deployed as part of these setup instructions.
 

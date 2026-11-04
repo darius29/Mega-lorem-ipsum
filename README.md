@@ -86,12 +86,14 @@ created_at Timestamp Generated automatically by SQLite
 Create and update requests send title, category, description, and status. The backend rejects missing, empty, whitespace-only, or non-string required values.
 
 Example request body:
+```
 {
 "title": "Example record",
 "category": "Technology",
 "description": "An example description.",
 "status": "Active"
 }
+```
 
 Shareable Modal URLs
 Dialog Example

@@ -30,42 +30,53 @@ Prerequisites
 - Git (to clone the repository)
   Getting Started
   Clone the repository:
+  ```
   git clone https://github.com/darius29/Mega-lorem-ipsum.git
   cd Mega-lorem-ipsum
+  ```
 
 1. Set up the backend
    In your first terminal:
+   ```
    cd server
    npm install
    npm run seed
    npm run dev
+   ```
    The API runs at http://localhost:3001 by default.
    Important: Run npm run seed at least once on a fresh clone. The SQLite database file is intentionally excluded from Git, so an initial database will otherwise contain no sample records. The seed script inserts 200 records only when the records table is empty; it does not append another 200 records to a non-empty table.
 
-2. Set up the frontend
+3. Set up the frontend
    In a second terminal, starting from the repository root:
+   ```
    cd client
    npm install
    npm run dev
+   ```
    Open http://localhost:5173 in your browser.
 
 Keep both the backend and frontend running while using the application.
 Available Commands
 Backend (server/)
 Command Description
+```
 npm run dev Start the API with Nodemon
 npm start Start the API with Node.js
 npm run seed Insert 200 sample records if the database is empty
 npm test Run backend tests
+```
 
 Frontend (client/)
 Command Description
+```
 npm run dev Start the Vite development server
 npm run build Build the frontend for production
 npm run preview Preview the production build
 npm run lint Run ESLint
+```
 
 REST API
+```
 Base URL: http://localhost:3001/api/records
 Method Endpoint Description Success response
 GET /api/records Get all records 200 OK
@@ -73,6 +84,7 @@ GET /api/records/:id Get a record by ID 200 OK
 POST /api/records Create a record 201 Created
 PUT /api/records/:id Update a record 200 OK
 DELETE /api/records/:id Delete a record 204 No Content
+```
 
 Record fields
 Field Type Notes
@@ -109,8 +121,10 @@ For Edit and Delete, the specified ID must refer to an existing record. These UR
 
 Testing
 Run the backend test suite:
+```
 cd server
 npm test
+```
 The repository includes 14 backend tests covering record validation and REST API operations. API integration tests use a temporary SQLite database to keep test data separate from the application's records.
 
 The frontend functionality can be checked manually by creating a record, editing it, deleting it after confirmation, trying the search/sort/pagination controls, and testing modal keyboard interaction and Back/Forward navigation.

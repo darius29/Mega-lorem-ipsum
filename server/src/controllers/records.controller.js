@@ -44,7 +44,7 @@ const createRecord = (req, res) => {
 const updateRecord = (req, res) => {
   const id = Number(req.params.id);
 
-  if (!Number.isSafeInteger(id || id <= 0)) {
+  if (!Number.isSafeInteger(id) || id <= 0) {
     return res.status(400).json({
       error: "Invalid record ID",
     });
